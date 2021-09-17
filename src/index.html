@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Grid Table</title>
+        <link rel="stylesheet" href="../dist/index.css">
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type='text/babel'>
+            const renderGrid = grid => {
+                const headerCells = [...grid.querySelectorAll('[data-grid-th]')]
+                const gridTemplateColumns = headerCells.reduce((acc, cell) => {
+                    const hasAttribute = (cell, attr) => attr in cell.dataset 
+                    let columnWidth = 'max-content'
+                    
+                    if(hasAttribute(cell, 'gridThActions')) {
+                        columnWidth = '40px'
+                    } 
+
+                    if(hasAttribute(cell, 'gridThDummy')) {
+                        columnWidth = 'minmax(0px, 1fr)'
+                    }
+                    
+                    return [acc, columnWidth].join(' ') 
+                }, '')
+
+                grid.style.gridTemplateColumns = gridTemplateColumns 
+            }
+
+            const grids = [...document.querySelectorAll('[data-grid]')]
+
+            grids.forEach(renderGrid)
+        
+        </script>
+    </head>
+    <body>
+        <label>Grid</label>
+        <div data-grid class="c-grid">
+            <div data-grid-th data-grid-th-frozen class="c-grid-th">Full Name</div>
+            <div data-grid-th data-grid-th-actions data-grid-th-frozen  class="c-grid-th">Actions</div>
+            <div data-grid-th class="c-grid-th">Birthdate</div>
+            <div data-grid-th class="c-grid-th">Occupation</div>
+            <div data-grid-th data-grid-th-dummy class="c-grid-th"></div>
+
+            <div class="c-grid-td">Martin Gonzalez</div>
+            <div class="c-grid-td">...</div>
+            <div class="c-grid-td">1990-10-10</div>
+            <div class="c-grid-td">Scientist</div>
+            <div class="c-grid-td"></div>
+
+            <div class="c-grid-td">Klaudia Steufelshein</div>
+            <div class="c-grid-td">...</div>
+            <div class="c-grid-td">1995-03-12</div>
+            <div class="c-grid-td">Actress</div>
+            <div class="c-grid-td"></div>
+        </div>
+        <hr>
+        <label>Flex</label>
+        <ul class='c-flex'>
+            <li class="c-flex-item">flex item 1</li>
+            <li class="c-flex-item">flex item 2</li>
+            <li class="c-flex-item">flex item 3</li>
+            <li class="c-flex-item">flex item 4</li>
+        </ul>
+        <hr>
+        <label>Grid buttons</label>
+        <div class='c-grid-buttons'>
+            <button>button A</button>
+            <button>button B</button>
+            <button>button C</button>
+            <button>button D</button>
+        </div>
+        <div class='c-grid-buttons m-2-2'>
+            <button>button A</button>
+            <button>button B</button>
+            <button>button C</button>
+            <button>button D</button>
+        </div>
+    </body>
+</html>

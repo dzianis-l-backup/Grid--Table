@@ -1,0 +1,24 @@
+{
+  "name": "grid--table",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "sass": "^1.39.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass --watch ./src/grid.scss ./dist/index.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DenzelStiglitz/Grid--Table.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DenzelStiglitz/Grid--Table/issues"
+  },
+  "homepage": "https://github.com/DenzelStiglitz/Grid--Table#readme"
+}

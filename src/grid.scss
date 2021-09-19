@@ -4,7 +4,7 @@
 
 .c-grid {
     display: grid;
-    grid-template-columns: 40px 80px repeat(auto-fill, 100px) ;
+    grid-template-columns: 40px 80px repeat(auto-fill, 100px);
     overflow-x: auto;
 }
 
@@ -17,33 +17,5 @@
 
 .c-grid-th, .c-grid-td {
     padding: 3px;
-}
-
-.c-flex {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.c-flex-item {
-    list-style-type:none;
-    flex-grow: 1;
-    flex-basis: 100px;
-    background-color: #d1cdbf;
-    margin-left: 10px;
-    margin-bottom: 10px;
-    border-radius: 4px;
-}
-
-.c-grid-buttons {
-    display: grid;
-    max-width: 300px;
-    border: 1px solid #919f89;
-    padding: 3px;
-    margin-bottom: 10px;
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-
-    &.m-2-2 {
-        max-width: 200px;
-    }
 }
 

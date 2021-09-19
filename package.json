@@ -9,7 +9,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "sass": "sass --watch ./src/grid.scss ./dist/index.css"
+    "sass": "sass --watch src/grid.scss:dist/grid.css src/layouts.scss:dist/layouts.css"
   },
   "repository": {
     "type": "git",

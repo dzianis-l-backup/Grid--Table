@@ -4,9 +4,11 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Grid Table</title>
-        <link rel="stylesheet" href="../dist/index.css">
+        <link rel="stylesheet" href="../dist/grid.css">
+        <link rel="stylesheet" href="../dist/layouts.css">
         <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
         <script type='text/babel'>
+            // Grid: renders a Grid container
             const renderGrid = grid => {
                 const headerCells = [...grid.querySelectorAll('[data-grid-th]')]
                 const gridTemplateColumns = headerCells.reduce((acc, cell) => {
@@ -30,7 +32,44 @@
             const grids = [...document.querySelectorAll('[data-grid]')]
 
             grids.forEach(renderGrid)
-        
+        </script>
+        <script type="text/babel">
+            // Data: renders Grid rows
+            const rows = [
+                ['Martin Gonzalez', '...', '1990-10-10', 'Scientist',],
+                ['Klaudia Steufelshein', '...', '1995-03-12', 'Actress',]
+            ]
+
+            const createRowTag = () => {
+                const rowTag = document.createElement('div')
+                rowTag.setAttribute('class', "c-grid-td")
+
+                return rowTag
+            }
+
+            const renderGridRows = (grid, rows) => {
+                const renderRow = (row) => {
+                    const renderCell = cell => {
+                        const cellTag = createRowTag()
+                        cellTag.innerText = cell
+
+                        return cellTag
+                    }
+
+                    const rowTags = row.map(renderCell).concat(createRowTag())
+                    
+                    return rowTags
+                }
+                
+                rows.map(renderRow).forEach(rowTags => {
+                    rowTags.forEach(tag => {
+                        
+                        grid.appendChild(tag)
+                    })
+                })
+            }
+
+            [...document.querySelectorAll('[data-grid]')].forEach(grid => renderGridRows(grid, rows))
         </script>
     </head>
     <body>
@@ -41,18 +80,6 @@
             <div data-grid-th class="c-grid-th">Birthdate</div>
             <div data-grid-th class="c-grid-th">Occupation</div>
             <div data-grid-th data-grid-th-dummy class="c-grid-th"></div>
-
-            <div class="c-grid-td">Martin Gonzalez</div>
-            <div class="c-grid-td">...</div>
-            <div class="c-grid-td">1990-10-10</div>
-            <div class="c-grid-td">Scientist</div>
-            <div class="c-grid-td"></div>
-
-            <div class="c-grid-td">Klaudia Steufelshein</div>
-            <div class="c-grid-td">...</div>
-            <div class="c-grid-td">1995-03-12</div>
-            <div class="c-grid-td">Actress</div>
-            <div class="c-grid-td"></div>
         </div>
         <hr>
         <label>Flex</label>
